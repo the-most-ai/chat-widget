@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Виджет: разработка (Vite + мок)</title>
+  <link rel="stylesheet" href="/demo/hostile.css">
+  <script src="/demo/demo.js"></script>
+  <!-- В dev-режиме модуль: document.currentScript пуст, виджет находит тег по data-tenant. -->
+  <script type="module" src="/src/index.ts"
+          data-tenant="demo"
+          data-quick-replies="Как сменить тариф? | Подключить интернет в офис | Связаться с оператором /operator"
+          data-teaser="Есть вопрос? Спросите ассистента"
+          data-ai-avatar="/demo/ai.svg"
+          data-operator-avatar="/demo/operator.svg"
+          data-title="Помощник (dev)"
+          data-operator-name="Оператор Анна"
+          data-greeting="Здравствуйте! Напишите /help — команды мока."
+          data-consent-url="https://example.com/privacy"></script>
+</head>
+<body>
+  <div class="demo-header">Dev-стенд: исходники через Vite, мок шлюза на /v1</div>
+  <div class="demo-grid">
+    <div class="demo-card">
+      <button data-call="open">open</button>
+      <button data-call="close">close</button>
+      <button data-call="reset">reset</button>
+      <button data-call="proactive-reset">сбросить приглашения</button>
+      <button data-hook="none">хук: без маскирования</button>
+      <button data-hook="mask">хук: маскировать</button>
+      <button data-hook="throw">хук: ошибка</button>
+      <button data-hook="hang">хук: таймаут</button>
+    </div>
+    <div class="demo-card"><div id="log"></div></div>
+  </div>
+</body>
+</html>

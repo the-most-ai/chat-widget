@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Демо виджета: враждебная страница, строгий CSP</title>
+  <link rel="stylesheet" href="/demo/hostile.css">
+  <!-- Код сайта: работает с виджетом через очередь, до загрузки виджета. Инлайновых скриптов нет. -->
+  <script src="/demo/demo.js" defer></script>
+  <!-- Подключение виджета. Шлюз — на другом origin (CORS и preflight как в бою). -->
+  <script src="/avai-chat.js" defer
+          data-api="http://localhost:5181/v1"
+          data-tenant="demo"
+          data-quick-replies="Как сменить тариф? | Подключить интернет в офис | Связаться с оператором /operator"
+          data-teaser="Есть вопрос? Спросите ассистента"
+          data-ai-avatar="/demo/ai.svg"
+          data-operator-avatar="/demo/operator.svg"
+          data-title="Помощник"
+          data-operator-name="Оператор Анна"
+          data-greeting="Здравствуйте! Я помощник компании. Чем помочь? Напишите /help — команды мока."
+          data-consent-url="https://example.com/privacy"
+          data-auto-open="3"
+          data-position="right"></script>
+</head>
+<body>
+  <div class="demo-header">Демо-сайт с вредными стилями</div>
+  <p>Шрифт страницы — Comic Sans, корневой размер 10px, глобальные отступы, <code>div:empty{display:none}</code>,
+     жёлтые кнопки и повороты. Внутри виджета ничего этого быть не должно. CSP без <code>unsafe-inline</code> и <code>unsafe-eval</code>.</p>
+  <div class="demo-grid">
+    <div class="demo-card">
+      <b>Окно</b>
+      <button data-call="open">AvaiChat.open()</button>
+      <button data-call="close">AvaiChat.close()</button>
+      <button data-call="toggle">AvaiChat.toggle()</button>
+      <button data-call="reset">AvaiChat.reset()</button>
+      <button data-call="proactive-reset">Сбросить приглашения</button>
+      <button data-call="context">setContext({ region: 'Москва', page })</button>
+      <button data-call="left">слева / справа</button>
+    </div>
+    <div class="demo-card">
+      <b>Хук beforeSend</b> (сейчас: <span id="hook-mode">mask</span>)
+      <button data-hook="none">без маскирования</button>
+      <button data-hook="mask">маскировать цифры (300 мс)</button>
+      <button data-hook="throw">выбрасывает ошибку</button>
+      <button data-hook="hang">не отвечает (таймаут 5 с)</button>
+    </div>
+    <div class="demo-card">
+      <b>События AvaiChat.on()</b>
+      <div id="log"></div>
+    </div>
+  </div>
+</body>
+</html>

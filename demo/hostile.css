@@ -1,0 +1,20 @@
+/* «Вредные» стили, которые встречаются на реальных сайтах. Виджет должен выглядеть одинаково с ними и без них. */
+html { font-size: 62.5%; }
+* { box-sizing: content-box; margin: 4px; padding: 3px; font-family: 'Comic Sans MS', cursive !important;
+    line-height: 3 !important; letter-spacing: 2px; text-transform: uppercase; color: #0a0 !important; }
+div:empty, span:empty { display: none !important; }
+button { background: yellow !important; border: 3px dashed blue !important; border-radius: 0 !important; width: 200px; }
+textarea { height: 300px !important; background: pink !important; }
+svg { width: 100px !important; height: 100px !important; fill: red !important; }
+a { color: magenta !important; }
+section, header, div { transform: rotate(0.5deg); filter: hue-rotate(90deg); }
+body > * { position: relative !important; z-index: 1 !important; opacity: 0.95; }
+body { font-size: 1.4rem; background: #f6f6f6; padding: 2rem; }
+
+/* Страница демо */
+.demo-header { background: #ff0032; color: #fff !important; padding: 1.6rem 2.4rem; font-size: 2rem; }
+.demo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.6rem; }
+.demo-card { background: #fff; padding: 1.6rem; border-radius: 8px; }
+.demo-card button { display: block; width: 100%; margin: 0.4rem 0; text-transform: none; }
+#log { font-family: monospace !important; font-size: 1.2rem; white-space: pre-wrap; max-height: 30rem; overflow: auto;
+       text-transform: none; line-height: 1.4 !important; background: #111; color: #9f9 !important; padding: 1rem; }
